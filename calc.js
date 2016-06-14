@@ -16,6 +16,8 @@ if (userArgs.indexOf("+") >= 0) {
   answer = value1 / value2;
 } else if (userArgs.indexOf("%") >= 0) {
   answer = value1 % value2;
+} else if (userArgs.indexOf("^") >=0) {
+  answer = Math.pow(value1, value2);
 } else {answer = "I don't know how to do that!"}
 
 //console.log(answer);
