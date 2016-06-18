@@ -17,7 +17,9 @@ if (userArgs.indexOf("+") >= 0) {
 } else if (userArgs.indexOf("%") >= 0) {
   answer = value1 % value2;
 } else if (userArgs.indexOf("^") >=0) {
-  answer = Math.pow(value1, value2);
+  answer = Math.pow(value1, value2); 
+} else if (userArgs.indexOf("sqrt") >= 0) {
+  answer = Math.sqrt(value1);
 } else {answer = "I don't know how to do that!"}
 
 //console.log(answer);
