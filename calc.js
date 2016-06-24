@@ -1,26 +1,25 @@
 #! /usr/bin/env node
 
-var userArgs = process.argv.slice(2);
-var spl = problem.split(/[+x/%-]/);
-var result=spl.map(Number);
-
-var notInteger = function (result) {
-  for (var i = 0; i < result.length; i++) { 
-   if ( /^\d+$/.test(result[i]) === true)
-      {
-            return true;
-  }
-};
-
-var value1 = Number(userArgs[0]);
-var value2 = Number(userArgs[2]);
-
-
+var userArgs = process.argv.slice(2).join('');
+var result = userArgs.split(/[+xps/%-]/).map(Number);
 
 var answer;
-if (notInteger(result) === true) {
-  console.log("Numbers only please");
-} else {
+var value1 = result[0];
+var value2 = result[1];
+
+var isInteger = function (result) {
+  for (var i = 0; i < result.length; i++) { 
+   if ( /^\d+$/.test(result[i]) === false)
+      {return false;}
+    else {return true;}
+  } 
+};
+
+
+ if (isInteger(result) === false) {
+   answer = "Numbers only please!";
+ } else {
+
     if (userArgs.indexOf("+") >= 0) {
       answer = value1 + value2;
     } else if (userArgs.indexOf("-") >= 0) {
@@ -31,9 +30,16 @@ if (notInteger(result) === true) {
       answer = value1 / value2;
     } else if (userArgs.indexOf("%") >= 0) {
       answer = value1 % value2;
-    } else if (userArgs.indexOf("^") >=0) {
+    } else if (userArgs.indexOf("p") >=0) {
       answer = Math.pow(value1, value2);
-    } else {answer = "I don't know how to do that!"}
-}
-//console.log(answer);
-console.log(answer);
+    } else if (userArgs.indexOf("s") >= 0) {
+        answer = Math.sqrt(value1);
+    } else if (userArgs.indexOf("+") == 0) {
+      answer = storedValue + value1;
+    } else {answer = "I don't know how to do that!";}
+ }
+
+ console.log(answer);
+
+
+
